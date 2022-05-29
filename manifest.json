@@ -5,7 +5,7 @@
 	"author": "VirtualOx",
 	"icons": { "48": "icon.png" },
 	"browser_action":{
-		"default_title": "Crunchyroll premium patrocinado por moneyDSBP",
+		"default_title": "Crunchyroll Premium por VirtualOx",
 		"default_popup": "Crunchyroll.html",
 		"default_icon": "icon.png"
 	},
