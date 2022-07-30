@@ -1,20 +1,4 @@
 {
-<<<<<<< Updated upstream
-	"name": "Crunchyroll Premium",
-	"version": "1.0.5",
-	"description": "Permite ver todas las series de Crunchyroll totalmente gratis.",
-	"author": "VirtualOx",
-	"icons": { "48": "icon.png" },
-	"browser_action":{
-		"default_title": "Crunchyroll Premium por VirtualOx",
-		"default_popup": "Crunchyroll.html",
-		"default_icon": "icon.png"
-	},
-	"permissions": [
-		  "storage"
-        ],
-	"content_scripts": [
-=======
   "name": "Crunchyroll Premium",
   "version": "1.2.1",
   "description": "Le permite ver todos los videos de Crunchyroll de forma gratuita.",
@@ -49,19 +33,12 @@
     ]
   },
   "content_scripts": [
->>>>>>> Stashed changes
     {
       "matches": [ "https://*.crunchyroll.com/*" ],
       "css": [ "content.css" ],
       "js": [ "content.js" ],
       "run_at": "document_start"
     }
-<<<<<<< Updated upstream
-],
-	"manifest_version": 2
-}
-=======
   ],
   "manifest_version": 3
 }
->>>>>>> Stashed changes
