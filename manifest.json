@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
 	"name": "Crunchyroll Premium",
 	"version": "1.0.5",
 	"description": "Permite ver todas las series de Crunchyroll totalmente gratis.",
@@ -13,11 +14,54 @@
 		  "storage"
         ],
 	"content_scripts": [
+=======
+  "name": "Crunchyroll Premium",
+  "version": "1.2.1",
+  "description": "Le permite ver todos los videos de Crunchyroll de forma gratuita.",
+  "author": "VirtualOx-sys",
+  "icons": {
+    "48": "icon.png"
+  },
+  "action": {
+    "default_title": "Crunchyroll Premium",
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback"
+  ],
+  "host_permissions": [
+    "https://pl.crunchyroll.com/*",
+    "https://www.crunchyroll.com/*",
+    "https://*.virtualox-sys.github.io/*",
+    "https://*.v.vrv.co/*",
+    "http://localhost/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "crpcors",
+        "enabled": true,
+        "path": "cors.json"
+      }
+    ]
+  },
+  "content_scripts": [
+>>>>>>> Stashed changes
     {
-        "matches": ["http://www.crunchyroll.com/*", "https://www.crunchyroll.com/*"],
-        "css": ["content.css"],
-        "js": ["content.js"]
+      "matches": [ "https://*.crunchyroll.com/*" ],
+      "css": [ "content.css" ],
+      "js": [ "content.js" ],
+      "run_at": "document_start"
     }
+<<<<<<< Updated upstream
 ],
 	"manifest_version": 2
 }
+=======
+  ],
+  "manifest_version": 3
+}
+>>>>>>> Stashed changes
