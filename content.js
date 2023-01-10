@@ -75,7 +75,7 @@ function importPlayer(ready = false) {
     var up_next_title = document.querySelector('[data-t="next-episode"] h4')?.textContent;
     var up_next_thumbnail = document.querySelector('[data-t="next-episode"] img')?.src;
     //var thumbnail = document.querySelector('.video-player-wrapper picture > img')?.src;
-    var thumbnail = ep.images.thumbnail[0][7].source; //pegando a imagem do player
+    var thumbnail = ep.images.thumbnail[0][7].source; //Obtener la imagen del reproductor
     var playback = ep.playback;
     var series = document.querySelector('.show-title-link > h4')?.innerText;
 
