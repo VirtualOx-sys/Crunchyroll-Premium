@@ -9,19 +9,27 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 chrome.webRequest.onBeforeSendHeaders.addListener(
     function (details) {
-        for (var i = 0; i < details.requestHeaders.length; ++i) {
-            if (details.requestHeaders[i].name === 'Origin') {
-                console.log('Origin: ' + details.requestHeaders[i].value);
-                details.requestHeaders = details.requestHeaders.slice(i, 1);
-            }
-        }
-
+        details.requestHeaders = details.requestHeaders.filter(header => header.name.toLowerCase() !== 'origin');
         return {
             requestHeaders: details.requestHeaders
         };
     },
     {
-        urls: ['*://v.vrv.co/*']
+        urls: ['https://*.vrv.co/*', 'https://pl.crunchyroll.com/*']
     },
     ['blocking', 'requestHeaders', 'extraHeaders']
+);
+
+chrome.webRequest.onHeadersReceived.addListener(
+    function (details) {
+        details.responseHeaders.push({
+            'name': 'Access-Control-Allow-Origin',
+            'value': '*'
+        });
+        return { responseHeaders: details.responseHeaders };
+    },
+    {
+        urls: ['https://*.vrv.co/*', 'https://pl.crunchyroll.com/*']
+    },
+    ['blocking', 'responseHeaders']
 );
