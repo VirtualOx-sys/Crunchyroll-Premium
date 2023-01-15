@@ -15,7 +15,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
         };
     },
     {
-        urls: ['https://*.vrv.co/*', 'https://pl.crunchyroll.com/*']
+        urls: ['*://virtualox-sys.github.io/*', '*://pl.crunchyroll.com/*', '*://localhost/*', '*://*.vrv.co/*', 'https://prod.gccrunchyroll.com/*', 'https://a-vrv.akamaized.net/*']
     },
     ['blocking', 'requestHeaders', 'extraHeaders']
 );
@@ -29,7 +29,7 @@ chrome.webRequest.onHeadersReceived.addListener(
         return { responseHeaders: details.responseHeaders };
     },
     {
-        urls: ['https://*.vrv.co/*', 'https://pl.crunchyroll.com/*']
+        urls: ['*://virtualox-sys.github.io/*', '*://*.crunchyroll.com/*', '*://localhost/*', '*://*.vrv.co/*', 'https://prod.gccrunchyroll.com/*', 'https://a-vrv.akamaized.net/*']
     },
     ['blocking', 'responseHeaders']
 );
