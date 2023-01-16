@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 chrome.webRequest.onBeforeSendHeaders.addListener(
     function (details) {
-        details.requestHeaders = details.requestHeaders.filter(header => header.name.toLowerCase() !== 'origin');
+        details.requestHeaders = details.requestHeaders.filter(header => header.name.toLowerCase() !== 'origin' && header.name.toLowerCase() !== 'referer');
         return {
             requestHeaders: details.requestHeaders
         };

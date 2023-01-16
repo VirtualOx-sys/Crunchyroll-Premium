@@ -126,9 +126,10 @@ function addPlayer(element, playerInfo, beta = false) {
 }
 
 async function getData(video_id) {
-    let USER_AGENT = 'Kamyroll/4.1.0 Android/7.1.2 okhttp/4.9.2';
     for (let i = 0; i < 2; i++) {
         await getToken();
+        console.log('[CR Premium] Obteniendo datos de la transmisión...');
+
         let localToken = localStorage.getItem('token');
 
         let response_media = await fetchByPass('https://api.kamyroll.tech/videos/v1/streams?channel_id=crunchyroll&id=' + video_id + '&locale=pt-BR', {
@@ -136,8 +137,7 @@ async function getData(video_id) {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localToken,
-                'accept': '*/*',
-                'user-agent': USER_AGENT
+                'accept': '*/*'
             }
         });
         if (response_media.includes('error')) {
@@ -152,7 +152,6 @@ async function getData(video_id) {
 
 async function getToken() {
     let localExpires = localStorage.getItem('expires');
-    let USER_AGENT = 'Kamyroll/4.1.0 Android/7.1.2 okhttp/4.9.2';
 
     if (localExpires == null || localExpires < Date.now()) {
         console.log('[CR Premium] Token caducado, generando nuevo token...');
@@ -168,10 +167,8 @@ async function getToken() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'accept': '*/*',
-                'user-agent': USER_AGENT
-            },
-            params: data
+                'accept': '*/*'
+            }
         });
         let token = JSON.parse(response)['access_token'];
         let expires = parseInt(JSON.parse(response)['expires_in']);
