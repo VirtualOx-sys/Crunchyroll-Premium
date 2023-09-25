@@ -1,6 +1,8 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    console.log(request.options);
     fetch(request.url, request.options)
         .then(async response => {
+            console.log(response);
             sendResponse({ result: await response.text() });
         })
         .catch(error => sendResponse({ error: error }));
