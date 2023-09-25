@@ -65,7 +65,7 @@ function importPlayer(ready = false) {
     // var ep_lang = preservedState.localization.locale.replace('-', '');
     // var ep_id = preservedState.watch.id;
     // var ep = preservedState.content.media.byId[ep_id];
-    var ep_lang = 'ptBR';
+    var ep_lang = 'es419';
     var ep_id = location.href.match(/watch\/(.*?)\//)[1];
 
     // if (!ep) {
