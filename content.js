@@ -136,9 +136,11 @@ async function getData(video_id) {
         let localToken = localStorage.getItem('token');
         let allTokens = JSON.parse(localToken);
         let mediaInfo = await getMediaInfo(video_id, allTokens.token);
-        if (mediaInfo == null) continue;
+         if (mediaInfo == null) {
+            localStorage.removeItem('token');
+            continue;
+        }
         let mediaId = mediaInfo[0];
-        if (mediaId == null) continue;
         let url = `https://beta-api.crunchyroll.com/cms/v2${allTokens.cms.bucket}/videos/${mediaId}/streams?Policy=${allTokens.cms.policy}&Signature=${allTokens.cms.signature}&Key-Pair-Id=${allTokens.cms.key_pair_id}`;
         let response_media = await fetchByPass(url, {
             method: 'GET',
@@ -170,7 +172,11 @@ async function getMediaInfo(video_id, token) {
         return null;
     }
     let json = JSON.parse(resp);
-    return [json.data[0].episode_metadata.versions[0].media_guid, json.data[0].episode_metadata.subtitle_locales[0]];
+    let lang = json.data[0].episode_metadata.subtitle_locales[0];
+    if (json.data[0].episode_metadata.is_dubbed) {
+        lang = json.data[0].episode_metadata.audio_locale;
+    }
+    return [json.data[0].episode_metadata.versions[0].media_guid, lang];
 }
 
 async function getToken() {
